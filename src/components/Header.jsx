@@ -1,6 +1,6 @@
 export const Header = () => (
   <header>
-    <nav className="fixed w-full z-20 top-0 start-0 border-b">
+    <nav className="fixed w-full z-20 top-0 start-0 border-b bg-azul-100">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <img src="/logo-residuum.png" alt="Logo residuum" className="logo" />
 

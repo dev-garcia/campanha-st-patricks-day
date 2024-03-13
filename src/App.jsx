@@ -81,95 +81,99 @@ function App() {
     <>
       <Header />
 
-      <h1>Descarte seu Resíduo</h1>
-      <div>
-        <div className="mb-4">
-          <label
-            htmlFor="descarte"
-            className="block text-sm font-medium leading-6"
-          >
-            Descarte:
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
-              <input
-                type="number"
-                placeholder="Descarte"
-                value={descarte}
-                onChange={(e) => setDescarte(e.target.value)}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </label>
-        </div>
+      <main className="mt-32">
+        <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
+          Descarte suas garrafas aqui
+        </h1>
+        <div>
+          <div className="mb-4">
+            <label
+              htmlFor="descarte"
+              className="block text-sm font-medium leading-6"
+            >
+              Descarte:
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
+                <input
+                  type="number"
+                  placeholder="Descarte"
+                  value={descarte}
+                  onChange={(e) => setDescarte(e.target.value)}
+                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </label>
+          </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="palpite"
-            className="block text-sm font-medium leading-6"
-          >
-            Palplite:
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
-              <input
-                type="number"
-                placeholder="Palpite"
-                value={palpite}
-                onChange={(e) => setPalpite(e.target.value)}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </label>
-        </div>
+          <div className="mb-4">
+            <label
+              htmlFor="telefone"
+              className="block text-sm font-medium leading-6"
+            >
+              Telefone:
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
+                <input
+                  type="number"
+                  placeholder="Telefone"
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
+                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </label>
+          </div>
 
-        <div className="mb-4">
-          <label
-            htmlFor="telefone"
-            className="block text-sm font-medium leading-6"
-          >
-            Telefone:
-            <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
-              <input
-                type="number"
-                placeholder="Telefone"
-                value={telefone}
-                onChange={(e) => setTelefone(e.target.value)}
-                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
-              />
-            </div>
-          </label>
-        </div>
+          <div className="mb-4">
+            <label
+              htmlFor="palpite"
+              className="block text-sm font-medium leading-6"
+            >
+              Palplite:
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
+                <input
+                  type="number"
+                  placeholder="Palpite"
+                  value={palpite}
+                  onChange={(e) => setPalpite(e.target.value)}
+                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </label>
+          </div>
 
-        <div className="mb-4">
-          <input
-            type="date"
-            placeholder="Data do descarte"
-            value={dataDescarte}
-            onChange={(e) => setDataDescarte(e.target.value)}
-            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
-          />
-        </div>
-        <button onClick={createDescarte}>Registrar Descarte</button>
+          <div className="mb-4">
+            <input
+              type="date"
+              placeholder="Data do descarte"
+              value={dataDescarte}
+              onChange={(e) => setDataDescarte(e.target.value)}
+              className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+            />
+          </div>
+          <button onClick={createDescarte}>Registrar Descarte</button>
 
-        <ul>
-          {descartes.map((descarte) => (
-            <li key={descarte.id}>
-              <p>
-                Data do Descarte:{" "}
-                {new Date(descarte["data-descarte"]).toLocaleDateString()}
-              </p>
-              <p>Descarte: {descarte.descarte}</p>
-              <p>Palpite: {descarte.palpite}</p>
-              <p>Telefone: {descarte.telefone}</p>
-              <button onClick={() => deleteDescarte(descarte.id)}>
-                Deletar
-              </button>
-              <button
-                onClick={() => updateDescarte(descarte.id, { descarte: 10 })}
-              >
-                Atualizar Descarte
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <ul>
+            {descartes.map((descarte) => (
+              <li key={descarte.id}>
+                <p>
+                  Data do Descarte:{" "}
+                  {new Date(descarte["data-descarte"]).toLocaleDateString()}
+                </p>
+                <p>Descarte: {descarte.descarte}</p>
+                <p>Palpite: {descarte.palpite}</p>
+                <p>Telefone: {descarte.telefone}</p>
+                <button onClick={() => deleteDescarte(descarte.id)}>
+                  Deletar
+                </button>
+                <button
+                  onClick={() => updateDescarte(descarte.id, { descarte: 10 })}
+                >
+                  Atualizar Descarte
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </main>
 
       <Footer />
     </>
