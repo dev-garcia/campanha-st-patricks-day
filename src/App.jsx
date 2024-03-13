@@ -95,10 +95,10 @@ function App() {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
                 <input
                   type="number"
-                  placeholder="Descarte"
+                  placeholder="Insira a quantidade de garrafas que você descartou"
                   value={descarte}
                   onChange={(e) => setDescarte(e.target.value)}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                  className="block flex-1 border-0 bg-transparent py-2 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
             </label>
@@ -113,10 +113,10 @@ function App() {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
                 <input
                   type="number"
-                  placeholder="Telefone"
+                  placeholder="Insira seu número de telefone"
                   value={telefone}
                   onChange={(e) => setTelefone(e.target.value)}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                  className="block flex-1 border-0 bg-transparent py-2 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
             </label>
@@ -131,25 +131,41 @@ function App() {
               <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
                 <input
                   type="number"
-                  placeholder="Palpite"
+                  placeholder="Quantas garrafas você imagina que foram descartadas nesta semana?"
                   value={palpite}
                   onChange={(e) => setPalpite(e.target.value)}
-                  className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                  className="block flex-1 border-0 bg-transparent py-2 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
                 />
               </div>
             </label>
           </div>
 
           <div className="mb-4">
-            <input
-              type="date"
-              placeholder="Data do descarte"
-              value={dataDescarte}
-              onChange={(e) => setDataDescarte(e.target.value)}
-              className="block flex-1 border-0 bg-transparent py-1.5 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
-            />
+            <label
+              htmlFor="date"
+              className="block text-sm font-medium leading-6"
+            >
+              Data do descarte:
+              <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-azul-100 sm:max-w-md">
+                <input
+                  type="date"
+                  id="dataDescarte"
+                  name="dataDescarte"
+                  placeholder="Data do descarte"
+                  value={dataDescarte}
+                  onChange={(e) => setDataDescarte(e.target.value)}
+                  className="block flex-1 border-0 bg-transparent py-2 pl-1 placeholder:text-cinza-100 focus:ring-0 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </label>
           </div>
-          <button onClick={createDescarte}>Registrar Descarte</button>
+
+          <button
+            onClick={createDescarte}
+            className="border-none bg-verde-100 text-branco-100 rounded-md"
+          >
+            Registrar Descarte
+          </button>
 
           <ul>
             {descartes.map((descarte) => (
