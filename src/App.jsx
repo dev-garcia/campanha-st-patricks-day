@@ -9,6 +9,8 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyC6PUs8NCqmSVRrWaRO3-vhN6tbkySQ2OQ",
@@ -77,6 +79,9 @@ function App() {
 
   return (
     <>
+      <Header />
+
+      <h1>Descarte seu Resíduo</h1>
       <div>
         <div className="mb-4">
           <label
@@ -165,6 +170,8 @@ function App() {
           ))}
         </ul>
       </div>
+
+      <Footer />
     </>
   );
 }
