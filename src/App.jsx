@@ -31,6 +31,8 @@ function App() {
   const [telefone, setTelefone] = useState("");
   const [descartes, setDescartes] = useState([]);
 
+  const [showModal, setShowModal] = useState(false);
+
   const db = getFirestore(firebaseApp);
   const descartesCollectionRef = collection(db, "descarte");
 
@@ -60,6 +62,8 @@ function App() {
       setDescarte("");
       setPalpite("");
       setTelefone("");
+
+      setShowModal(true);
     } catch (error) {
       console.error("Erro ao adicionar documento: ", error);
     }
@@ -164,24 +168,34 @@ function App() {
           >
             Registrar Descarte
           </button>
-
-          <ul>
-            {descartes.map((descarte) => (
-              <li key={descarte.id}>
-                <p>
-                  Data do Descarte:{" "}
-                  {new Date(descarte.data.seconds * 1000).toLocaleDateString()}
-                </p>
-                <p>Descarte: {descarte.descarte}</p>
-                <p>Palpite: {descarte.palpite}</p>
-                <p>Telefone: {descarte.telefone}</p>
-                <button onClick={() => deleteDescarte(descarte.id)}>
-                  Deletar
-                </button>
-              </li>
-            ))}
-          </ul>
         </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-10 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
+            <div className="relative w-auto max-w-sm mx-auto my-6">
+              {/* Modal content */}
+              <div className="bg-white rounded-lg shadow-lg">
+                <div className="px-6 py-4">
+                  <div className="text-lg font-semibold mb-2">Parabéns!</div>
+                  <p className="text-gray-700">
+                    Você está concorrendo e desejamos boa sorte! Se você for o
+                    vencedor, a equipe da Heineken entrará em contato com você
+                    pelo número de telefone que você cadastrou.
+                  </p>
+                </div>
+                <div className="px-6 py-4 bg-gray-100 flex justify-end">
+                  <button
+                    className="text-gray-700 bg-transparent border border-solid border-gray-500 rounded-md hover:bg-gray-200 px-3 py-1 text-sm focus:outline-none"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Fechar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
